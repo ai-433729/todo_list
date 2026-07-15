@@ -1,0 +1,67 @@
+【構成要素】
+・Todoアイテムを追加する
+・Todoアイテムを更新する
+・Todoアイテムを削除する
+・Todoアイテム数（合計）の表示
+
+【Todoアイテムの追加方法】
+１．入力欄にTodoアイテムのタイトルを入力する
+→Todoアイテムのタイトルを取得するために、input要素（入力欄）から内容を取得する
+
+２．入力欄でEnterキーを押して送信する
+→Enterキーで送信されたことを知るために、form要素のsubmitイベント（送信）を監視する
+
+３．TodoリストにTodoアイテムが追加される
+→入力内容をタイトルにしたTodoアイテムを作成し、Todoリスト（#js-todo-list）にTodoアイテム要素を追加する
+
+
+以下App.jsをTodoItemViewクラスとTodoListViewクラスを使ってリファクタリングする前のコード。
+todoItems.forEach(item => {
+    // 完了済みならchecked属性をつけ、未完了ならchecked属性を外す
+    // input要素にはcheckboxクラスをつける
+    const todoItemElement = item.completed
+        ? element`<li><input type="checkbox" class="checkbox" checked>
+                    <s>${item.title}</s>
+                    <button class="delete">削除</button>
+                </li>`
+        : element`<li><input type="checkbox" class="checkbox">
+                    ${item.title}
+                    <button class="delete">削除</button>
+                </li>`;
+    //チェックボックスがトグルしたときのイベントにリスナー関数を登録
+    const inputCheckboxElement = todoItemElement.querySelector(".checkbox");
+    inputCheckboxElement.addEventListener("change", () => {
+        //指定したTodoアイテムの完了状態を反転させる
+        this.#todoListModel.updateTodo({
+            id: item.id,
+            completed: !item.completed
+        });
+    });
+    //削除ボタン(x)がクリックされたときにTodoListModelからアイテムを削除する
+    const deleteButtonElement = todoItemElement.querySelector(".delete");
+    deleteButtonElement.addEventListener("click", () => {
+        this.#todoListModel.deleteTodo({
+            id: item.id
+        });
+    });
+    todoListElement.appendChild(todoItemElement);
+});
+
+
+/*Todoアイテム数
+    let todoItemCount = 0;
+    formElement.addEventListener("submit", (event) => {
+        // 本来のsubmitイベントの動作を止める
+        event.preventDefault();
+        // 追加するTodoアイテムの要素(li要素)を作成する
+        const todoItemElement = element`<li>${inputElement.value}</li>`;
+        // TodoアイテムをtodoListElementに追加する
+        todoListElement.appendChild(todoItemElement);
+        // コンテナ要素の中身をTodoリストをまとめるList要素で上書きする
+        render(todoListElement, containerElement);
+        // Todoアイテム数を+1し、表示されてるテキストを更新する
+        todoItemCount += 1;
+        todoItemCountElement.textContent = `Todoアイテム数： ${todoItemCount}`;
+        // 入力欄を空文字列にしてリセットする
+        inputElement.value = "";
+    });      */       

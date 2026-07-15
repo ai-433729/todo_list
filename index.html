@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja
+">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="todoapp">
+        <form id="js-form">
+            <input
+                id="js-form-input"
+                class="new-todo"
+                type="text"
+                placeholder="リストに追加する内容を入力してください。"
+                autocomplete="off"
+                />
+        </form>
+        <div id="js-todo-list" class="todo-list">
+            <!-- 動的に更新されるToDoリスト -->
+        </div>
+        <footer class="footer">
+            <span id="js-todo-count">ToDoアイテム数: 0</span>
+        </footer>        
+    </div>
+
+<script type="module" src="index.js"></script>
+    
+</body>
+</html>
