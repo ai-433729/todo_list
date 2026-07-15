@@ -9,22 +9,30 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="todoapp">
-        <form id="js-form">
-            <input
-                id="js-form-input"
-                class="new-todo"
-                type="text"
-                placeholder="リストに追加する内容を入力してください。"
-                autocomplete="off"
-                />
-        </form>
-        <div id="js-todo-list" class="todo-list">
-            <!-- 動的に更新されるToDoリスト -->
+    <h1>ToDoリスト</h1>
+
+    <div class="todo-wrapper">
+        <div class="todoapp">
+            <form id="js-form">
+                <input
+                    id="js-form-input"
+                    class="new-todo"
+                    type="text"
+                    placeholder="リストに追加する内容を入力してください。"
+                    autocomplete="off"
+                    />
+            </form>
+            <div id="js-todo-list" class="todo-list">
+                <!-- 動的に更新されるToDoリスト -->
+            </div>
+            <div class="list-count">
+                <span id="js-todo-count">ToDoリスト数: 0</span>
+            </div>
         </div>
-        <footer class="footer">
-            <span id="js-todo-count">ToDoアイテム数: 0</span>
-        </footer>        
+        <div class="memo-area">
+            <p>---Memo---</p>
+            <textarea name="memo" id="memo" placeholder="メモを入力してください"></textarea>
+        </div>
     </div>
 
 <script type="module" src="index.js"></script>

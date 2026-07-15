@@ -13,11 +13,11 @@ export class TodoItemView {
     createElement(todoItem, { onUpdateTodo, onDeleteTodo }) {
         const todoItemElement = todoItem.completed
             ? element`<li><input type="checkbox" class="checkbox" checked>
-                        <s>${todoItem.title}</s>
+                        <span><s>${todoItem.title}</s></span>
                         <button class="delete">削除</button>
                     </li>`
             : element`<li><input type="checkbox" class="checkbox">
-                        ${todoItem.title}
+                        <span>${todoItem.title}</span>
                         <button class="delete">削除</button>
                     </li>`;
         const inputCheckboxElement = todoItemElement.querySelector(".checkbox");
@@ -25,7 +25,7 @@ export class TodoItemView {
             //コールバック関数に変更
             onUpdateTodo({
                 id: todoItem.id,
-                conpleted: !todoItem.completed
+                completed: !todoItem.completed
             });
         });
         const deleteButtonElement = todoItemElement.querySelector(".delete");

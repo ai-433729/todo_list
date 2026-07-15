@@ -57,7 +57,7 @@ export class App {
 
                 //Todoアイテムが削除イベントを発生したときに呼ばれるリスナー関数
                 //上で定義したTodoListModelのdeleteTodoメソッドを呼び出す、handleDeleteを呼び出す
-                onDaleteTodo: ({ id }) => {
+                onDeleteTodo: ({ id }) => {
                     this.handleDelete({ id });
                 }
             });
