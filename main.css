@@ -49,24 +49,37 @@ body {
         background: linear-gradient(90deg, #e7c6f5 0%, #9dd6e0 50%, #b47dbd 100%);
         color: transparent;
         background-clip: text;
+        animation: txt-anim 4s ease-in-out infinite alternate;
     }
 
     >svg {
-        animation: yurayura 3s ease-in-out infinite alternate;
+        animation: svg-anim 1.4s ease-in-out infinite alternate;
     }
 }
 
-@keyframes yurayura {
+@keyframes txt-anim {
     0% {
-        transform: translate(0, 8px);
+        transform: translateY(8px);
     }
 
     50% {
-        transform: translate(0, 4px);
+        transform: translateY(4px);
     }
 
     100% {
-        transform: translate(0, 8px);
+        transform: translateY(8px);
+    }
+}
+
+
+
+@keyframes svg-anim {
+    0% {
+        transform: translateY(16px);
+    }
+
+    100% {
+        transform: translateY(10px);
     }
 }
 
@@ -112,7 +125,7 @@ body {
 .todoapp input::placeholder {
     color: #fff;
     font-weight: 300;
-    font-size: 16px;
+    font-size: clamp(0.625rem, 0.438rem + 0.75vw, 1rem);/* 16-10 */
 }
 
 .new-todo {
