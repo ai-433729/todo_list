@@ -8,8 +8,11 @@ export class EventEmitter {
     @param {function} listener イベントリスナー 
     */
     addEventListener(type, listener) {
-        // 指定したイベントに対応するSetを取り出し、リスナー関数を登録する
-        const listenerSet = this.#listeners.getOrInsertComputed(type, () => new Set());
+        // 💡 iPhoneでも確実に動く標準的な書き方に修正
+        if (!this.#listeners.has(type)) {
+            this.#listeners.set(type, new Set());
+        }
+        const listenerSet = this.#listeners.get(type);
         listenerSet.add(listener);
     }
 
