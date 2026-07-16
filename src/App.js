@@ -4,9 +4,11 @@ import { TodoItemModel } from "./model/TodoItemModel.js";
 import { TodoListModel } from "./model/TodoListModel.js";
 
 export class App {
-    _todoListView = new TodoListView();
-    // 1. TodoListModelの初期化
-    _todoListModel = new TodoListModel([]);
+    constructor() {
+        this._todoListView = new TodoListView();
+        // 1. TodoListModelの初期化
+        this._todoListModel = new TodoListModel([]);        
+    }
 
     /**
      * Todoを追加するときに呼ばれるリスナー関数
