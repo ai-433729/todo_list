@@ -24,8 +24,7 @@ body {
     min-height: 100dvh;
     font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.4em;
-    background: linear-gradient(0deg, rgba(71, 71, 71, 1) 0%, rgba(142, 116, 143, 1) 20%, rgba(147, 111, 150, 1) 40%, rgba(130, 156, 176, 1) 60%, rgba(89, 145, 150, 1) 80%, rgba(71, 71, 71, 1) 100%);
-    backdrop-filter: blur(100px);
+    background: linear-gradient(0deg,rgba(71, 71, 71, 1) 0%, rgba(142, 116, 143, 1) 20%, rgba(147, 111, 150, 1) 40%, rgba(113, 144, 168, 1) 70%, rgba(71, 71, 71, 1) 100%);
     color: #fff;
     margin: 0 auto;
     font-weight: 300;

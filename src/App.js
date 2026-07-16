@@ -4,9 +4,9 @@ import { TodoItemModel } from "./model/TodoItemModel.js";
 import { TodoListModel } from "./model/TodoListModel.js";
 
 export class App {
-    #todoListView = new TodoListView();
+    _todoListView = new TodoListView();
     // 1. TodoListModelの初期化
-    #todoListModel = new TodoListModel([]);
+    _todoListModel = new TodoListModel([]);
 
     /**
      * Todoを追加するときに呼ばれるリスナー関数
@@ -14,7 +14,7 @@ export class App {
      * @param {string} title
      */
     handleAdd(title) {
-        this.#todoListModel.addTodo(new TodoItemModel({ title, completed: false }));
+        this._todoListModel.addTodo(new TodoItemModel({ title, completed: false }));
     }
 
     /**
@@ -23,7 +23,7 @@ export class App {
      */
 
     handleUpdate({ id, completed }) {
-        this.#todoListModel.updateTodo({ id, completed });
+        this._todoListModel.updateTodo({ id, completed });
     }
 
     /**
@@ -31,7 +31,7 @@ export class App {
      * @param {{ id: number }}
      */
     handleDelete({ id }) {
-        this.#todoListModel.deleteTodo({ id });
+        this._todoListModel.deleteTodo({ id });
     }
 
     mount() {
@@ -41,13 +41,13 @@ export class App {
         const todoItemCountElement = document.querySelector("#js-todo-count");
 
         // 2. TodoListModelの状態が更新されたら表示を更新する
-        this.#todoListModel.onChange(() => {
+        this._todoListModel.onChange(() => {
 
             // それぞれのTodoItem要素をtodoListElement以下へ追加する
-            const todoItems = this.#todoListModel.getTodoItems();
+            const todoItems = this._todoListModel.getTodoItems();
 
             //todoItemsに対応するTodoListViewを作成する
-            const todoListElement = this.#todoListView.createElement(todoItems, {
+            const todoListElement = this._todoListView.createElement(todoItems, {
 
                 //Todoアイテムが更新イベントを発生したときに呼ばれるリスナー関数
                 //上で定義したTodoListModelのupdateTodoメソッドを呼び出す、handleUpdateを呼び出す
@@ -66,7 +66,7 @@ export class App {
             render(todoListElement, containerElement);
 
             // アイテム数の表示を更新
-            todoItemCountElement.textContent = `ToDoアイテム数： ${this.#todoListModel.getTotalCount()}`;
+            todoItemCountElement.textContent = `ToDoアイテム数： ${this._todoListModel.getTotalCount()}`;
         });
 
         // 3. フォームを送信したら、新しいTodoItemModelを追加する
